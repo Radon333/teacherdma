@@ -15,6 +15,11 @@ app.use(express.json());
 app.listen(process.env.PORT || port, () => {
 	console.log("listening 8080...");
 });
+
+var cors = require("cors");
+app.use(cors());
+
+
 app.route("/staff")
     .get(async (req, res) => {
         let data = await detail.find();

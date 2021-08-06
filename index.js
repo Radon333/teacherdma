@@ -15,10 +15,6 @@ app.use(express.json());
 app.listen(process.env.PORT || port, () => {
 	console.log("listening 8080...");
 });
-
-var cors = require("cors");
-app.use(cors());
-
 app.route("/staff")
     .get(async (req, res) => {
         let data = await detail.find();
@@ -36,7 +32,7 @@ app.route("/staff")
     })
     .put(async (req, res) => {
         console.log(req.body);
-        let s = await detail.updateOne({ "userId": req.body.userId }, { "$set": { "firstName": req.body.firstName}})
+        let s = await detail.updateOne({ "userId": req.body.userId }, { "$set": {   "jobTitleName":req.body.jobTitleName,"firstName":req.body.firstName,"lastName":req.body.lastName,"department":req.body.department, "employeeCode": req.body.employeeCode ,"emailAddress": req.body.emailAddress ,"phoneNumber": req.body.phoneNumber}})
         res.send(s);
 
     })
@@ -45,31 +41,15 @@ app.route("/staff")
         let d = await detail.deleteOne({ "userId": req.body.userId });
         res.send(d);
         console.log(d);
+		
+		
+		
 
-    })
-/*
-app.route("/teachers")
-    .get(async (req, res) => {
-        let data = await teacher.find();
-        console.log(data);
-        res.send(data);
-    })
-    .post(async (req, res) => {
-        console.log(req.body);
-        let s = new teacher(req.body);
-        let result = await s.save();
-        res.send(result);
-    })
-    .put(async (req, res) => {
-        console.log(req.body);
-        let s = await teacher.updateOne({ "_id": req.body._id }, { "$set": { "name": req.body.name, "age": req.body.age, "city": req.body.city } })
-        res.send(s);
-
-    })
-    .delete(async (req, res) => {
-        let d = await teacher.deleteOne({ "_id": req.query._id });
-        res.send(d);
-        console.log(d);
-
-    })
-    */
+	})
+	
+	
+	app.get("/staff/:id", async (req, res) => {
+	console.log(req.params.id);
+	let data = await detail.find({"_id": req.params.id});
+	res.send(data[0]);
+});

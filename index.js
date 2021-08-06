@@ -43,7 +43,7 @@ app.route("/staff")
     })
     .delete(async (req, res) => {
         
-        let d = await detail.deleteOne({ "userId": req.body.userId });
+        let d = await detail.deleteOne({"_id": req.body._id});
         res.send(d);
         console.log(d);
 		

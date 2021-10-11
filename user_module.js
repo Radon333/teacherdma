@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-conn_str = "mongodb+srv://shiv-nosql:nosql@cluster0.esppv.mongodb.net/project?retryWrites=true&w=majority";
+conn_str = "mongodb://shiv-nosql:nosql@cluster0-shard-00-00.esppv.mongodb.net:27017,cluster0-shard-00-01.esppv.mongodb.net:27017,cluster0-shard-00-02.esppv.mongodb.net:27017/project?ssl=true&replicaSet=atlas-tpt76p-shard-0&authSource=admin&retryWrites=true&w=majority";
 //connection to MongoDb
 mongoose.connect(conn_str, { useNewUrlParser: true, useUnifinedTopology: true })
 

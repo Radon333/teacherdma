@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-conn_str = "mongodb+srv://shiv-nosql:nosql@cluster0.esppv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+conn_str = "mongodb+srv://shiv-nosql:nosql@cluster0.esppv.mongodb.net/project?retryWrites=true&w=majority";
 //connection to MongoDb
 mongoose.connect(conn_str, { useNewUrlParser: true, useUnifinedTopology: true })
 

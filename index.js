@@ -17,6 +17,7 @@ app.listen(process.env.PORT || port, () => {
 });
 
 var cors = require("cors");
+var bcrypt = require("bcryptjs");
 app.use(cors());
 
 

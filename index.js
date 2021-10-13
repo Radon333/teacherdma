@@ -29,12 +29,12 @@ app.route("/staff")
     })
 
     .post(async (req, res) => {
-        var salt = bcrypt.genSaltSync(10);
-        var hash = bcrypt.hashSync(teacher.password, salt);
+        //var salt = bcrypt.genSaltSync(10);
+        //var hash = bcrypt.hashSync(teacher.password, salt);
         
         console.log(req.body);
         let s = new detail(req.body);
-        s.password=hash;
+        //s.password=hash;
         let result = await s.save();
         res.send(result);
         

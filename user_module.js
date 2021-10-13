@@ -5,13 +5,12 @@ conn_str = "mongodb://shiv-nosql:nosql@cluster0-shard-00-00.esppv.mongodb.net:27
 mongoose.connect(conn_str, { useNewUrlParser: true, useUnifinedTopology: true })
 
 const orderSchema = new mongoose.Schema({
-  "userId": String,
-  "jobTitleName": String,
-  "firstName": String,
-  "department": String,
   "employeeCode": String,
+  "name": String,
+  "branch": String,
+  "jobTitleName": String,
   "phoneNumber": String,
-  "emailAddress": String,
+  "emailID": String,
   "password":String,
   "announcements":[],
   "notes":{

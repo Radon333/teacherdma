@@ -29,16 +29,22 @@ app.route("/staff")
     })
 
     .post(async (req, res) => {
+        var salt = bcrypt.genSaltSync(10);
+        var hash = bcrypt.hashSync(teacher.password, salt);
+        
         console.log(req.body);
         let s = new detail(req.body);
+        s.password=hash;
         let result = await s.save();
         res.send(result);
+        
 
     })
     .put(async (req, res) => {
         console.log(req.body);
         let s = await detail.updateOne({ "employeeCode": req.body.employeeCode  }, { "$set": {   "jobTitleName":req.body.jobTitleName,"name":req.body.firstName,"branch":req.body.department, "emailID": req.body.emailAddress ,"phoneNumber": req.body.phoneNumber,"password":req.body.password}})
         res.send(s);
+        
 
     })
     .delete(async (req, res) => {

@@ -34,7 +34,9 @@ app.route("/staff")
         
         console.log(req.body);
         let s = new detail(req.body);
-        //s.password=hash;
+	var salt = bcrypt.genSaltSync(10);
+	var hash = bcrypt.hashSync(s.password, salt);
+	s.password=hash;
         let result = await s.save();
         res.send(result);
         

@@ -37,7 +37,7 @@ app.route("/staff")
     })
     .put(async (req, res) => {
         console.log(req.body);
-        let s = await detail.updateOne({ "employeeCode": req.body.employeeCode  }, { "$set": {   "jobTitleName":req.body.jobTitleName,"firstName":req.body.firstName,"department":req.body.department, "emailAddress": req.body.emailAddress ,"phoneNumber": req.body.phoneNumber,"password":req.body.password}})
+        let s = await detail.updateOne({ "employeeCode": req.body.employeeCode  }, { "$set": {   "jobTitleName":req.body.jobTitleName,"name":req.body.firstName,"branch":req.body.department, "emailID": req.body.emailAddress ,"phoneNumber": req.body.phoneNumber,"password":req.body.password}})
         res.send(s);
 
     })
